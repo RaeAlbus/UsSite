@@ -154,7 +154,13 @@
         password: $('#password').value,
       });
       btn.disabled = false;
-      if (error) $('#loginMsg').textContent = "That username and password didn't match. Try again.";
+      if (error) {
+        console.error('Sign-in error:', error);
+        const wrongLogin = /invalid login credentials/i.test(error.message || '');
+        $('#loginMsg').textContent = wrongLogin
+          ? "That username and password didn't match. Try again."
+          : `Sign-in problem: ${error.message}`;
+      }
     });
 
     $('#signOut').addEventListener('click', () => sb.auth.signOut());
