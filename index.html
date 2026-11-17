@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <title>Us</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <p class="site" id="siteTitle">Us</p>
+      <div class="user" id="userBox" hidden>
+        <span id="userName"></span>
+        <button class="linkish" id="signOut" type="button">Sign out</button>
+      </div>
+    </header>
+
+    <div id="notice" class="notice" role="status" hidden></div>
+
+    <section class="login" id="login" hidden>
+      <h1>Sign in</h1>
+      <p>This site is just for the two of you.</p>
+      <form id="loginForm">
+        <label for="email">Email</label>
+        <input id="email" type="email" autocomplete="username" required>
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="current-password" required>
+        <button class="save" id="loginBtn" type="submit">Sign in</button>
+        <p class="status msg err" id="loginMsg" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <nav class="tabs" id="tabs" aria-label="Sections" hidden></nav>
+    <main id="app" hidden></main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="core.js"></script>
+
+  <!-- Each tab is one file. To add a new one, write features/yourthing.js and add a line here. -->
+  <script src="features/scores.js"></script>
+  <script src="features/calendar.js"></script>
+  <script src="features/photos.js"></script>
+
+  <script>App.start();</script>
+</body>
+</html>
