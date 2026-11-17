@@ -3,5 +3,5 @@
 window.CONFIG = {
   TITLE: "Us",
   SUPABASE_URL: "https://ymjyavggvmjpheovkezb.supabase.co/rest/v1/",
-  SUPABASE_ANON_KEY: "sb_secret_kt-H-HPQlpKopAct34B4Yw_n-jCUlw7"
+  SUPABASE_ANON_KEY: "sb_publishable_7Lh1qcx_4mQtAjy7Yzbrhg_NrmOv99"
 };
