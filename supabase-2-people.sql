@@ -5,7 +5,7 @@
 -- slot 0 shows on the LEFT of the scoreboard, slot 1 on the RIGHT.
 
 insert into public.profiles (id, name, slot)
-select id, 'Rae', 0 from auth.users where email = 'rachelalbus@gmail.com';
+select id, 'Rae', 0 from auth.users where email = 'rae@example.com';
 
 insert into public.profiles (id, name, slot)
-select id, 'Conor', 1 from auth.users where email = 'conordevaney@gmail.com';
+select id, 'Conor', 1 from auth.users where email = 'conor@example.com';
