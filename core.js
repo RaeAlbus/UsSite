@@ -82,6 +82,14 @@
   }
 
   // ---------- sign-in ----------
+  // Supabase logs in with an email, so a username is quietly turned into username@LOGIN_DOMAIN.
+  // Typing a full email still works too.
+  function toLoginEmail(input) {
+    const v = (input || '').trim().toLowerCase();
+    if (v.includes('@')) return v;
+    return `${v}@${C.LOGIN_DOMAIN || 'example.com'}`;
+  }
+
   function showLogin() {
     resetTabs();
     $('#app').hidden = true;
@@ -142,11 +150,11 @@
       btn.disabled = true;
       $('#loginMsg').textContent = '';
       const { error } = await sb.auth.signInWithPassword({
-        email: $('#email').value.trim(),
+        email: toLoginEmail($('#username').value),
         password: $('#password').value,
       });
       btn.disabled = false;
-      if (error) $('#loginMsg').textContent = "That email and password didn't match. Try again.";
+      if (error) $('#loginMsg').textContent = "That username and password didn't match. Try again.";
     });
 
     $('#signOut').addEventListener('click', () => sb.auth.signOut());
