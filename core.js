@@ -90,6 +90,10 @@
     return `${v}@${C.LOGIN_DOMAIN || 'example.com'}`;
   }
 
+  function projectRef() {
+    try { return new URL(C.SUPABASE_URL).hostname.split('.')[0]; } catch (e) { return 'unreadable URL'; }
+  }
+
   function showLogin() {
     resetTabs();
     $('#app').hidden = true;
@@ -159,7 +163,7 @@
         const wrongLogin = /invalid login credentials/i.test(error.message || '');
         $('#loginMsg').textContent = wrongLogin
           ? "That username and password didn't match. Try again."
-          : `Sign-in problem: ${error.message}`;
+          : `Sign-in problem: ${error.message} (project ${projectRef()}, key ends in ${(C.SUPABASE_ANON_KEY || '').slice(-4)})`;
       }
     });
 
